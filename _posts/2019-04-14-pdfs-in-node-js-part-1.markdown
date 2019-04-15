@@ -89,5 +89,5 @@ const path = require('path');
 })();
 {% endhighlight %}
 
-The index script reads HTML from a file (`markup.html`) and passes the HTML as a string to the renderer's `generatePDFFromHTML()` method, defined above. That method returns the PDF as a [`Buffer`](https://nodejs.org/api/buffer.html#buffer_buffer), which is then written to an file.
+The index script reads HTML from a file (`markup.html`) and passes the HTML as a string to the renderer's `generatePDFFromHTML()` method, defined above. That method returns the PDF as a [`Buffer`](https://nodejs.org/api/buffer.html#buffer_buffer), which is then written to a file.
 
