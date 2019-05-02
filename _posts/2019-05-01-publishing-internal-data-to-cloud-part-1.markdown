@@ -15,5 +15,93 @@ Here's the outline of the steps that take the order data from the internal ERP s
 4. A Lambda function listens to the SNS topic, and upon receiving a new message that a JSON file has been uploaded to S3, reads the data from that file and imports it into the website's database
 
 Let's dig into each step:
+
 ## 1. Get the order data
- In my case I made a small C# command line program that queried the ERP database via a [SQLConnection](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection?view=netcore-2.2), transformed the result into JSON, and then uploaded the JSON to S3 using the [AWS SDK for .NET](https://aws.amazon.com/sdk-for-net/).
+In my case I made a small C# command line program that queried the ERP database via a [SQLConnection](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection?view=netcore-2.2). I'm going to skip covering the SQL code because it doesn't really matter, the point is to get a hold of the data however is necessary.
+
+## 2. Upload the order data to S3
+After getting the data the C# program transformed the result into JSON, and then uploaded the JSON to S3 using the [AWS SDK for .NET](https://aws.amazon.com/sdk-for-net/).
+
+Here's how to upload a file to S3 using the .NET SDK:
+
+{% highlight c# %}
+using Amazon;
+using Amazon.Runtime;
+using Amazon.S3;
+using Amazon.S3.Model;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Orders.Uploader.Models;
+using Newtonsoft.Json;
+
+namespace Orders.Uploader.Services.FileStorage
+{
+
+    public class S3FileStorageService
+    {
+        private IAmazonS3 S3Client { get; }
+        private S3FileStorageServiceOptions Options { get; }
+
+        /// <summary>
+        /// Create an S3FileStorageService, providing the S3 client to use.
+        /// </summary>
+        /// <param name="options">Options for this service</param>
+        /// <param name="client">An IAmazonS3 client</param>
+        public S3FileStorageService(S3FileStorageServiceOptions options, IAmazonS3 client)
+        {
+            S3Client = client;
+            Options = options;
+        }
+
+        /// <summary>
+        /// Create an S3FileStorageService, implicitly creating its own AmazonS3Client.
+        /// </summary>
+        /// <param name="options">Options for this service</param>
+        /// <param name="endpoint">Endpoint for the AWS region in which the S3 bucket exists</param>
+        public S3FileStorageService(S3FileStorageServiceOptions options, RegionEndpoint endpoint)
+        {
+            S3Client = new AmazonS3Client(new BasicAWSCredentials(options.AccessKey, options.SecretKey), endpoint);
+            Options = options;
+        }
+
+        /// <summary>
+        /// Upload a collection of orders as a JSON file to S3
+        /// </summary>
+        /// <param name="orders">The collection of orders</param>
+        public async Task UploadOrders(IEnumerable<Order> orders)
+        {
+            var ordersJSON = JsonConvert.SerializeObject(orders);
+            
+            var request = new PutObjectRequest()
+            {
+                ContentBody = ordersJSON,
+                BucketName = Options.BucketName,
+                Key = $"orders-{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}.json"
+            };
+
+            try
+            {
+                await S3Client.PutObjectAsync(request);
+            }
+            catch (AmazonS3Exception e)
+            {
+                if (e.ErrorCode != null &&
+                    (e.ErrorCode.Equals("InvalidAccessKeyId") ||
+                    e.ErrorCode.Equals("InvalidSecurity")))
+                {
+                    throw new Exception("Could not upload order data to S3. Make sure AWS credentials exist and are correct.", e);
+                }
+                else
+                {
+                    throw new Exception($"Could not upload order data to S3: {e.Message}", e);
+                }
+            }            
+        }
+    }
+}
+{% endhighlight %}
+
+The key piece is the `UploadOrders` method, which creates a `PutObjectRequest` and executes that with the `S3Client`'s `PutObjectAsync` method.
+
+## 3. Make S3 send a message to an SNS topic
