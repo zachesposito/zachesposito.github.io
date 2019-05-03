@@ -102,6 +102,37 @@ namespace Orders.Uploader.Services.FileStorage
 }
 {% endhighlight %}
 
-The key piece is the `UploadOrders` method, which creates a `PutObjectRequest` and executes that with the `S3Client`'s `PutObjectAsync` method.
+The key piece is the `UploadOrders` method, which creates a `PutObjectRequest` and executes that with the `S3Client`'s `PutObjectAsync` method. `Options.BucketName` is set to the name of an S3 bucket I created, for example `orders-bucket`. 
+
+`Options.AccessKey` and `Options.SecretKey` come from an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console) I made specifically for this uploader that was created with programmatic access. That user has a [policy](https://docs.aws.amazon.com/transfer/latest/userguide/users-policies-all-access.html) attached that only allows them to access the `orders-bucket` (the linked policy instructions are in the context of AWS Transfer for SFTP but they apply even though this solution doesn't use Transfer).
 
 ## 3. Make S3 send a message to an SNS topic
+Next I [created a new SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-tutorial-create-topic.html) named something like `new-order-file-notifications`. The topic has an access policy that only allows the `orders-bucket` to publish messages:
+
+{% highlight json %}
+{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "__default_statement_ID",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "arn:aws:sns:<region>:<AWS account number>:new-order-file-notifications",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:s3:::orders-bucket"
+        }
+      }
+    }
+  ]
+}
+{% endhighlight %}
+
+Then I went back to the `orders-bucket` in S3 and on the Properties tab for the bucket, configured a new event that sent a message to the `new-order-file-notifications` topic after a PUT request:
+![S3 event configuration screen](/static/img/s3-event.png)
+
+Now when a new JSON file containing order data is uploaded to the `orders-bucket`, a message is sent to the SNS topic. In part 2 I will show how to create a Lambda function that subscribes to the SNS topic and imports the latest order data into a database when it receives a new SNS message.
