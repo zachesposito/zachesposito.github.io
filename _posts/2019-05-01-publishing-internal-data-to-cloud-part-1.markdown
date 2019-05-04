@@ -104,7 +104,7 @@ namespace Orders.Uploader.Services.FileStorage
 
 The key piece is the `UploadOrders` method, which creates a `PutObjectRequest` and executes that with the `S3Client`'s `PutObjectAsync` method. `Options.BucketName` is set to the name of an S3 bucket I created, for example `orders-bucket`. 
 
-`Options.AccessKey` and `Options.SecretKey` come from an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console) I made specifically for this uploader that was created with programmatic access. That user has a [policy](https://docs.aws.amazon.com/transfer/latest/userguide/users-policies-all-access.html) attached that only allows them to access the `orders-bucket` (the linked policy instructions are in the context of AWS Transfer for SFTP but they apply even though this solution doesn't use Transfer).
+`Options.AccessKey` and `Options.SecretKey` come from an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console) I made specifically for this uploader that was created with programmatic access. That user has a [policy](https://docs.aws.amazon.com/transfer/latest/userguide/users-policies-all-access.html) attached that only allows it to access the `orders-bucket` (the linked policy instructions are in the context of AWS Transfer for SFTP but they apply even though this solution doesn't use Transfer).
 
 ## 3. Make S3 send a message to an SNS topic
 Next I [created a new SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-tutorial-create-topic.html) named something like `new-order-file-notifications`. The topic has an access policy that only allows the `orders-bucket` to publish messages:
