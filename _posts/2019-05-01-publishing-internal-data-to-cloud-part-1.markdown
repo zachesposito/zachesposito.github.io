@@ -135,4 +135,6 @@ Next I [created a new SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-t
 Then I went back to the `orders-bucket` in S3 and on the Properties tab for the bucket, configured a new event that sent a message to the `new-order-file-notifications` topic after a PUT request:
 ![S3 event configuration screen](/static/img/s3-event.png)
 
-Now when a new JSON file containing order data is uploaded to the `orders-bucket`, a message is sent to the SNS topic. In part 2 I will show how to create a Lambda function that subscribes to the SNS topic and imports the latest order data into a database when it receives a new SNS message.
+Now when a new JSON file containing order data is uploaded to the `orders-bucket`, a message is sent to the SNS topic. In [part 2][part-2-post] I will show how to create a Lambda function that subscribes to the SNS topic and imports the latest order data into a database when it receives a new SNS message.
+
+[part-2-post]:{{ site.baseurl }}{% post_url 2019-05-08-publishing-internal-data-to-cloud-part-2 %}
