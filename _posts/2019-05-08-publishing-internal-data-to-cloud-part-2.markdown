@@ -8,9 +8,17 @@ In [part 1][part-1-post] we covered how to upload a file containing order data t
 
 ## 4. Import order data into a database when a new file is uploaded
 ### Make a new Lambda function
+In the Lambda service in the AWS console choose **Create function**:
+* Author from scratch
+* **Function name** - choose `order-import-function`
+* **Runtime** - Node.js 10.x
+* **Permissions > Execution role** - choose **Create new role from AWS policy templates**, give the role a name, and then choose at least the **Amazon S3 object read-only permissions** template (my real function had additional permissions related to VPC access but I'm omitting the setup that for brevity)
+
 ### Trigger on SNS
+Once the function is created, then on the function configuration screen you can choose SNS as a trigger from the list on the left. On the **Configure triggers** card enter the [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of the SNS topic created in [part 1][part-1-post]. 
+
 ### Write Lambda
-Here's the Node.js Lambda that reads in the order JSON from S3 and inserts it into a SQL Server database:
+Here's the Node.js Lambda function that reads in the order JSON from S3 and inserts it into a SQL Server database:
 {% highlight javascript %}
 const AWS = require('aws-sdk');
 const sql = require('mssql');
@@ -45,8 +53,8 @@ const insertOrders = async (orders) => {
                 throw new Error(`Could not begin transaction: ${e}`);
             }            
             
-            const truncateRequest = new sql.Request(transaction);
-            await truncateRequest.query("IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL BEGIN drop table orders END");
+            const dropRequest = new sql.Request(transaction);
+            await dropRequest.query("IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL BEGIN drop table orders END");
 
             const table = new sql.Table('Orders');
             table.create = true;
@@ -118,8 +126,17 @@ exports.handler = async (event) => {
 Dependencies:
 * `aws-sdk` - [AWS SDK for JavaScript](https://github.com/aws/aws-sdk-js)
 * `mssql` - [SQL Server client for Node](https://github.com/tediousjs/node-mssql)
-* `./parser` is just a utility module that parses the orders JSON and makes sure that it's an array.
+* `./parser` is a utility module that parses the orders JSON and makes sure that it's an array.
 
+On the **Environment variables** card create these variables with these keys, filling in the values as appropriate for your database:
+* `databaseName`
+* `rdsEndpoint`
+* `sqlPass`
+* `sqlUser`
+
+`exports.handler` is the function that runs when the Lambda is triggered. This gets the name of the newly uploaded S3 file, gets the JSON contents of that file, parses the JSON back into an array of order objects, then sends the orders to the `insertOrders` function. 
+
+`insertOrders` uses `mssql` to begin a transaction, drop the orders table if it already exists in the database, then add a new orders table that has a row for each order. If any errors are encountered it tries to rollback the transaction.
 
 
 [part-1-post]:{{ site.baseurl }}{% post_url 2019-05-01-publishing-internal-data-to-cloud-part-1 %}
