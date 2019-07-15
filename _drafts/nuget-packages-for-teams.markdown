@@ -138,7 +138,19 @@ Defines a series of .NET Core CLI tasks to run:
 
 #### [dotnet build](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#build)
 
-Says to build all projects.
+Builds all projects, specified via wildcards.
+
+#### [dotnet test](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#test)
+
+Runs all tests, assuming that any test projects' names end in "Tests". The `--no-restore` option is used to disable restoring NuGet packages again, since they were restored in the previous step during `dotnet build`.
+
+#### [dotnet pack](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#pack)
+
+Create a NuGet package from the specified project.
+
+#### [dotnet push](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#push)
+
+Upload the NuGet package created in the previous step to the Artifacts feed.
 
 //yaml - assume version by csproj
 //undo bad yaml commits
