@@ -88,6 +88,58 @@ On the **Configure your pipeline** step, choose **Starter pipeline**:
 
 ![DevOps new pipeline step 3](/static/img/ice-cream-pipeline-3.png)
 
+On the **Review your pipeline YAML** step, replace the existing YAML with the following:
+
+{% highlight yaml %}
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '**/*.csproj'
+    
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*[Tt]ests/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --no-restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack'
+  inputs:
+    command: pack
+    packagesToPack: source/IceCreamLibrary/IceCreamLibrary.csproj
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet push'
+  inputs:
+    command: push
+    publishVstsFeed: 'zachesposito-devops-example'
+{% endhighlight %}
+
+Let's walk through each part of the build definition:
+
+### [trigger](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#push-trigger)
+
+Says to run this pipeline whenever commits are pushed to the master branch.
+
+### [pool](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#pool)
+
+Configures the environment in which the pipeline will run. In this case the operating system will be Ubuntu.
+
+### [steps](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#steps)
+
+Defines a series of .NET Core CLI tasks to run:
+
+#### [dotnet build](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/dotnet-core-cli?view=azure-devops#build)
+
+Says to build all projects.
+
 //yaml - assume version by csproj
 //undo bad yaml commits
 //had to make sure project-specific build service account was in Project Collection Build Service Accounts, and that that group had Contributor on feed
