@@ -67,10 +67,30 @@ Create a new project in Azure DevOps, then in the **Repos** tab click **Clone**:
 
 [Add the clone URL as a remote](https://help.github.com/en/articles/adding-a-remote) in the Ice Cream Library's local repo and [push the code to it](https://www.atlassian.com/git/tutorials/syncing/git-push).
 
-## Create NuGet feed
-//Does it already exist, just have to push to it?
+## Verify Artifacts feed exists
+In DevOps, under the **Artifacts** tab, a default feed named after your organizaztion should already exist. If not, click **+ New Feed** at the top to create a feed.
+
+![DevOps feed](/static/img/ice-cream-feed.png)
 
 ## Create publish pipeline
+
+In DevOps, under the **Pipelines** tab, click **Builds**, then **New pipeline**.
+
+On the **Where is your code?** step, choose **Azure Repos Git**:
+
+![DevOps new pipeline step 1](/static/img/ice-cream-pipeline-1.png)
+
+Then select the Ice Cream Library's repo:
+
+![DevOps new pipeline step 2](/static/img/ice-cream-pipeline-2.png)
+
+On the **Configure your pipeline** step, choose **Starter pipeline**:
+
+![DevOps new pipeline step 3](/static/img/ice-cream-pipeline-3.png)
+
+//yaml - assume version by csproj
+//undo bad yaml commits
+//had to make sure project-specific build service account was in Project Collection Build Service Accounts, and that that group had Contributor on feed
 
 ## Consume feed
 
