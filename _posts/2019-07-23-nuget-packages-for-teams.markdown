@@ -182,7 +182,7 @@ Run the pipeline again and the `dotnet push` step should succeed.
 
 ## Consume feed
 
-Now that the pipeline has run successfully and the package has been published to the **Artifacts** feed, it's time to use it. 
+Now that the pipeline has run successfully and the package has been published to the **Artifacts** feed, it's available for other projects to use. But, before the package can be downloaded, you must tell your development environment where to find it.
 
 ### Add package source 
 First, add a new NuGet package source to your development environment. Get the feed URL in DevOps by going to **Artifacts > Connect to feed**:
@@ -237,9 +237,9 @@ namespace DessertBar
 Running the above should output `Serving contains 2 scoops of Chocolate.`
 
 ## Releasing updates
-The above example showed how to create and use IceCreamLibrary version 1.0.0. What if you want to release an update, such as if you fixed a bug or added a new feature?
+The above example showed how to create and use IceCreamLibrary version 1.0.0. What if you want to release an update, such as bug fixes or new features?
 
-The pipeline set up earlier makes releasing new versions super easy. Simply update the `<Version>` element in the project file with the new version number and push that to the master branch in the DevOps. Updating the master branch will trigger the pipeline again, which will build, test, and publish the new version to the **Artifacts** feed. After the new version is published, it will be available to download via Nuget Package Manager or `dotnet add package`.
+The pipeline set up earlier makes releasing new versions super easy. Simply update the `<Version>` element in the project file with the new version number and push that to the master branch in the DevOps repo. Updating the master branch will trigger the pipeline again, which will build, test, and publish the new version to the **Artifacts** feed. After the new version is published, it will be available to download via Nuget Package Manager or `dotnet add package`.
 
 ## Conclusion
 The above example showed how to create a NuGet package, publish it to a private feed using an automatic pipeline, and how to consume the package in another project. Now you have the foundation for creating a collection of small, reusable C# modules for your development team, which enables greater code reuse, which can save a lot of time and increase productivity.
