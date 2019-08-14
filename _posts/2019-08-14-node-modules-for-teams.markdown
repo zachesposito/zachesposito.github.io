@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Creating and sharing Node modules in a team"
+date: 2019-08-14
 ---
 
 In my [guide to creating NuGet packages for teams][nuget-post], I showed how to create a NuGet package and host it on a private NuGet feed using Azure DevOps, with the goal of enabling greater code reuse. Here's how to do the same thing with Node.js modules:
