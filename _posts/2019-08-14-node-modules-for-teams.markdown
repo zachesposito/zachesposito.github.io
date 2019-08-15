@@ -97,7 +97,7 @@ If developing on another OS, [generate a token](https://docs.microsoft.com/en-us
 
 ## Use module
 
-Create another Node module to use the `ice-cream-library-node` module. In my case I reimplementated the very brief [DessertBar project from the NuGet guide][nuget-post-dessert-bar]. After creating `package.json`, use `npm install ice-cream-library-node --save` to get the ice cream library module from the DevOps Artifacts feed.
+Create another Node module to use the `ice-cream-library-node` module. In my case I reimplemented the very brief [DessertBar project from the NuGet guide][nuget-post-dessert-bar]. After creating `package.json`, use `npm install ice-cream-library-node --save` to get the ice cream library module from the DevOps Artifacts feed.
 
 After installing the ice cream library module, you can use it in code. Here's `index.js` from the Node version of DessertBar:
 
@@ -113,7 +113,7 @@ Running `node index.js` should output `Served 2 scoops of chocolate ice cream.`
 
 ## Releasing updates
 
-[Just like with NuGet packages][nuget-post-updates], to release new version, simply update the `version` property in `package.json` and then push a commit to the master branch in the DevOps repo. That will trigger the pipeline again and release a new version with the number you specified.
+[Just like with NuGet packages][nuget-post-updates], to release a new version, simply update the `version` property in `package.json` and then push a commit to the master branch in the DevOps repo. That will trigger the pipeline again and release a new version with the number you specified.
 
 ## Conclusion
 
