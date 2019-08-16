@@ -2,6 +2,7 @@
 layout: post
 title:  "Using Little CMS on Azure Batch"
 date:   2019-05-19
+subtitle: Scaling product visualization
 ---
 
 An important part of selling stuff online is product visualization - allowing a shopper to see the product. A common component of product visualization is showing a product in all available colors. For example, if a t-shirt can be made in black or white, it's important to show an image of each color option so that a shopper can see whether the shirt design looks good over both colors.
