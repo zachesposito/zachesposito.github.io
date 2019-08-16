@@ -1,0 +1,39 @@
+$text-color: #eef;
+$text-color--secondary: #d2d2d2;
+$link-color: #85b8fa;
+$link-color--light: #cae1ff;
+$link-color--dark: #77b0fb;
+
+body {
+  background: rgb(2,58,151);
+  background: linear-gradient(180deg, #1a1f2c 0%, #021648 710px, #023a97 1000px);
+  color:$text-color;
+}
+
+a {
+  color: $link-color;
+
+  &:visited {
+    color: $link-color;
+  }
+
+  &:active, &:hover {
+    color: $link-color--light;
+  }
+}
+
+.post-meta {
+  color: $text-color--secondary;
+}
+
+.svg-icon {
+  fill: $text-color--secondary;
+  vertical-align: middle;
+}
+
+.site-title, 
+.site-title:visited,
+.site-nav .page-link,
+.site-nav .page-link:visited {
+  color: $text-color;
+}

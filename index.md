@@ -4,3 +4,6 @@
 
 layout: home
 ---
+
+<p class="intro__lead">Hi, I'm Zach.</p> 
+<p>I do full-stack software development in Toledo, OH.</p>

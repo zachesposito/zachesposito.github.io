@@ -1,0 +1,24 @@
+.site-footer, .site-header {
+  border:none;
+}
+
+@media (min-width: 1000px){
+  .home {
+      display: flex;
+
+  }
+  .wrapper {
+      max-width:1000px;
+  }
+
+  .intro {
+    width:30%;
+  }
+
+  .posts {
+    width: 70%;
+  }
+}
+.social-media-list {
+  text-align: center;
+}
