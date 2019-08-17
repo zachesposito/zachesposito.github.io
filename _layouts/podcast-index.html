@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<div class="post-index">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.podcasts.size > 0 -%}
+    {% assign categories = "Software,Other" | split: "," -%}
+    {%- for category in categories -%}
+      {%- assign category_podcasts = site.podcasts | where: "category", category -%}
+      {%- if category_podcasts.size > 0 -%}
+        <h2>{{ category }}</h2>
+        <ul class="podcast-list">
+          {%- assign sorted = category_podcasts | sort:"title" -%}
+          {%- for podcast in sorted -%}
+          <li>
+              <a class="post-link" href="{{ podcast.url | relative_url }}">
+                {{ podcast.title | escape }}
+              </a>
+          </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+</div>
