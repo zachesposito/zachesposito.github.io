@@ -45,3 +45,13 @@ h1,h2,h3,h4,h5,h6 {
     color: $link-color--light;
   }
 }
+
+.site-nav {
+  @media screen and (max-width: 600px) {
+    background-color:transparent;
+    border-color: $text-color--heading;
+    .menu-icon > svg {
+      fill: $text-color--heading;
+    }
+  }
+}
