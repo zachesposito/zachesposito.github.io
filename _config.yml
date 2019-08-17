@@ -14,12 +14,12 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Zach Esposito
-# email: your-email@example.com
+email: contact@zachesposito.me
 description: >- # this means to ignore newlines until "baseurl:"
   Zach Esposito is a full-stack software developer working out of Toledo, OH.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: jekyllrb
+twitter_username: zesposi
 github_username:  zachesposito
 
 # Build settings
