@@ -69,8 +69,7 @@
 .highlight .vm { color: #f8f8f2 } /* Name.Variable.Magic */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
 
-.highlight {
-    & pre, & code {
-        background:#333;
-    }
+pre, code {
+    background:#333;
+    border-color:#626262;
 }

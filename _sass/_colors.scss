@@ -1,12 +1,12 @@
-$text-color: #eef;
-$text-color--secondary: #d2d2d2;
-$link-color: #85b8fa;
-$link-color--light: #cae1ff;
-$link-color--dark: #77b0fb;
+$text-color: rgb(177, 209, 219);
+$text-color--secondary: rgb(104, 132, 141);
+$text-color--heading: rgb(200, 221, 219);
+$link-color: #EEE5B1;
+$link-color--light: rgb(255, 240, 154);
 
 body {
-  background: rgb(2,58,151);
-  background: linear-gradient(180deg, #1a1f2c 0%, #021648 710px, #023a97 1000px);
+  background: #2D3241;
+  background: linear-gradient(180deg, rgb(32, 36, 49) 0%, #2D3241 510px);
   color:$text-color;
 }
 
@@ -27,13 +27,21 @@ a {
 }
 
 .svg-icon {
-  fill: $text-color--secondary;
+  fill: $link-color;
   vertical-align: middle;
 }
 
 .site-title, 
 .site-title:visited,
 .site-nav .page-link,
-.site-nav .page-link:visited {
-  color: $text-color;
+.site-nav .page-link:visited,
+h1,h2,h3,h4,h5,h6 {
+  color: $text-color--heading;
+}
+
+.site-title,
+.site-nav .page-link {
+  &:hover {
+    color: $link-color--light;
+  }
 }
