@@ -10,4 +10,4 @@ layout: home
 ## Hi, I'm Zach.
 I do full-stack software development in Toledo, OH. I enjoy combining automation with practical UIs to make users' lives easier.
 
-Outside of software I'm a dad to two beautiful kids. In my spare time I enjoy practicing [martial arts](https://www.ohiomartialarts.com/our-history), the mandolin, and [competitive team games](https://playoverwatch.com).
+Outside of software I'm a dad to two beautiful kids. In my spare time I like practicing [martial arts](https://www.ohiomartialarts.com/our-history), the mandolin, and [competitive team games](https://playoverwatch.com).
