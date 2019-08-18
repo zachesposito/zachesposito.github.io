@@ -1,5 +1,5 @@
 ---
 title: The Boagworld UX Show
-url: http://boagworld.com/show
+site: http://boagworld.com/show
 category: Software
 ---

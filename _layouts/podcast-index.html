@@ -19,7 +19,7 @@ layout: default
           {%- assign sorted = category_podcasts | sort:"title" -%}
           {%- for podcast in sorted -%}
           <li>
-              <a class="podcast-link" href="{{ podcast.url }}">
+              <a class="podcast-link" href="{{ podcast.site }}">
                 {{ podcast.title | escape }}
               </a>
           </li>
