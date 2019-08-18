@@ -1,5 +1,5 @@
 ---
 title: Software Engineering Radio
-url: https://se-radio.net
+site: https://se-radio.net
 category: Software
 ---

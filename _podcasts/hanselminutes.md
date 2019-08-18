@@ -1,5 +1,5 @@
 ---
 title: Hanselminutes
-url: https://www.hanselminutes.com
+site: https://www.hanselminutes.com
 category: Software
 ---

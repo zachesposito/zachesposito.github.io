@@ -1,5 +1,5 @@
 ---
 title: Stuff You Should Know
-url: https://stuffyoushouldknow.com
+site: https://stuffyoushouldknow.com
 category: Other
 ---

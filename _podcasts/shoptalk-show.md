@@ -1,5 +1,5 @@
 ---
 title: Shoptalk Show
-url: https://shoptalkshow.com
+site: https://shoptalkshow.com
 category: Software
 ---

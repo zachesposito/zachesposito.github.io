@@ -1,5 +1,5 @@
 ---
 title: Software Engineering Daily
-url: https://softwareengineeringdaily.com
+site: https://softwareengineeringdaily.com
 category: Software
 ---

@@ -1,5 +1,5 @@
 ---
 title: The Soundtrack Show
-url: https://www.soundtrackpodcast.com
+site: https://www.soundtrackpodcast.com
 category: Other
 ---

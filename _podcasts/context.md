@@ -1,5 +1,5 @@
 ---
 title: Context with Brad Harris
-url: https://bradharris.com
+site: https://bradharris.com
 category: Other
 ---
