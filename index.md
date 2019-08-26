@@ -8,7 +8,7 @@ layout: home
 ![Me](/static/img/face.png)
 </span>
 ## Hi, I'm Zach.
-I do full-stack software development out of Toledo, OH. I enjoy combining automation with practical UIs to make users' lives easier.
+I do full-stack software development out of Toledo, OH. I enjoy combining automation with practical UIs to make users' lives easier (and save them money).
 
 Outside of software I'm a dad to two beautiful kids. In my spare time I like practicing [martial arts](https://www.ohiomartialarts.com/our-history), the mandolin, and [competitive team games](https://playoverwatch.com).
 
