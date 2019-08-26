@@ -3,6 +3,8 @@ layout: post
 title:  "Creating a simple EPiServer plugin"
 date:   2019-06-21
 subtitle: Automating data flow to AWS using S3 and Lambda
+categories: [technical, walkthrough]
+tags: [episerver, c#, .net mvc]
 ---
 
 One of my main projects is a site that was built on the EPiServer CMS a couple years ago. The site depends on a set of product data, and I wanted to give site admins the ability to manage that data in the EPiServer admin interface. I knew EPiServer could be extended with plugins, but I had a difficult time figuring out the exact steps to make my own plugin. 

@@ -3,6 +3,8 @@ layout: post
 title:  "Publishing internal data to the cloud - Part 1"
 date:   2019-05-01
 subtitle: Automating data flow to AWS using S3 and Lambda
+categories: [technical, walkthrough]
+tags: [c#, aws]
 ---
 
 Sometimes an organization might have some private data stored on-premises, and a need arises to share some of that data publicly. In my case there was a need to give customers a way to check the status of their orders without logging in. To support this the order status data needed to be pulled from an internal [ERP](https://en.wikipedia.org/wiki/Enterprise_resource_planning) system and published to a website running in the cloud on [AWS](https://aws.amazon.com/).
