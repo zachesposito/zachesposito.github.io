@@ -2,6 +2,8 @@
 layout: post
 title:  "Creating and sharing NuGet packages in a team"
 date:   2019-07-23
+categories: [technical, walkthrough]
+tags: [c#, .net core, azure devops]
 ---
 
 There is always more development work to do than there is time to do it. This year I have been focusing on improving my development efficiency. Specifically, one of my goals has been to take advantage of more opportunities to reuse code.

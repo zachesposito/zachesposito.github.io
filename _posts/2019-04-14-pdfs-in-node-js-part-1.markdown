@@ -3,6 +3,8 @@ layout: post
 title:  "Creating PDFs with Node.js - Part 1"
 date:   2019-04-14
 subtitle: Generating PDFs using Puppeteer and HummusJS
+categories: [technical, walkthrough]
+tags: [node.js]
 ---
 The ability to generate PDFs is a common business need. There are many PDF libraries for a variety of programming languages and use cases available to help with this task. Some are proprietary and some are open-source.
 

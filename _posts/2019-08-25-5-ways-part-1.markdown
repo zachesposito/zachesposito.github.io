@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "The 5 Ways to Get Good at Anything, #1: Patience"
+date: 2019-08-25
+categories: [soft skills]
+---
+
+In my martial arts community we talk about there being 5 ways to become a great martial artist. However, they're really the 5 key behaviors required to get good at anything, including software development. This post is the first in a series that will illustrate how the 5 ways to become a great martial artist are also the 5 ways that lead to becoming a great software developer.
+
+The first way is **patience**.
+
+## Patience
+
+Everything that's truly valuable in life takes a long time to acquire. Think of goals such as a loving relationships, or financial success, or physical fitness. They all require years of steady effort to achieve.
+
+In martial arts it's important to understand that no one becomes an expert overnight, or in a week, or even a year. Everyone who has reached the level of mastery got there by consistently practicing for a decade or longer.
+
+Similarly, no one becomes an expert software developer quickly. It's easy to get discouraged when encountering developers that seem more talented than you, because things that might be hard for you might seem easy for them, which might make you doubt yourself. However, those people built their skills by working hard, making lots of mistakes, and learning from them for years.
+
+The prospect of working hard at something for years before it pays off can be daunting. How can you stay patient for years while waiting for a return on your effort?
+
+## In practice
+
+The answer is in this wonderful quote which has been attributed to [Sifu Robert Brown](https://www.zenmartialarts.com/sifu-robert-brown): "Love the practice, not the progress."
+
+The key is to enjoy the practice for its own sake, not only when you get gratification from seeing progress. In martial arts, this means showing up to class because it's __fun__, not just because you want to earn your next rank. 
+
+In software development, this means finding ways to study that are fun for you. For example, when learning a new coding language, if you find the stereotypical "Todo List App" tutorials boring, try making an application that you would enjoy using. If you have trouble staying interested in a technical book, perhaps take notes as you go so that you can summarize it in an entertaining presentation or article. If it's hard to come up with ideas, think back to what got you interested in programming in the first place.
+
+If you acknowledge that becoming a great software developer is going to take many years, and that the way to stay focused and committed to your learning is by finding how to make it fun for you, not only will you eventually achieve your goal, but you'll also enjoy the ride.

@@ -3,6 +3,8 @@ layout: post
 title:  "Creating PDFs with Node.js - Part 2"
 date:   2019-04-21
 subtitle: Generating PDFs using Puppeteer and HummusJS
+categories: [technical, walkthrough]
+tags: [node.js]
 ---
 
 In [part 1][part-1-post] I explored how to use [Puppeteer](https://github.com/GoogleChrome/puppeteer) to generate a PDF from HTML. Once we have a PDF, though, how can we manipulate it? For example, what if we need to automatically generate an index? We would somehow need to identify which keywords appear on which pages, turn that into a list, then add that list onto the end of the PDF. Is there a way to do all that in Node?
