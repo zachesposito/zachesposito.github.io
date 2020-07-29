@@ -11,25 +11,25 @@ Recently I needed to add a new [SQL Server Database Project](https://docs.micros
 A coworker pointed out that if you don't give a table's `PRIMARY KEY` constraint a name, then every DACPAC deployment will generate a new name for the constraint. This causes the table to be recreated which can waste a lot of time due to copying data, especially for very large tables.
 
 Solution: instead of specifying `PRIMARY KEY` in a column definition like this:
-```sql
+{% highlight sql %}
 CREATE TABLE [dbo.MyTable]
 (
     [MyTableId] INT NOT NULL PRIMARY KEY IDENTITY
 )
-```
+{% endhighlight %}
 
 Define the constraint seperately and give it a name, like this:
-```sql
+{% highlight sql %}
 CREATE TABLE [dbo.MyTable]
 (
     [MyTableId] INT NOT NULL IDENTITY --**Don't specify PRIMARY KEY here**
     CONSTRAINT [PK_MyTable] PRIMARY KEY CLUSTERED ([MyTableId] ASC) --**Make explicit constraint instead**
 )
-```
+{% endhighlight %}
 
 ## Make sure login's default database is correct
 Discovered the hard way that if you misconfigure a login by setting its default database to a database for which the login's user doesn't have the `CONNECT` grant, the user will be unable to log in at all, even though they might have the `CONNECT` grant on a different database on the same server. Here's an example of my mistake:
-```sql
+{% highlight sql %}
 CREATE LOGIN [MyLogin] WITH PASSWORD = 'password', DEFAULT_DATABASE=InaccessibleDatabase
 GO
 
@@ -38,7 +38,7 @@ GO
 
 GRANT CONNECT TO [MyUser]
 GO
-```
+{% endhighlight %}
 
 Setting the login's default database to the one they actually have access to fixes the problem.
 
