@@ -43,6 +43,6 @@ GO
 Setting the login's default database to the one they actually have access to fixes the problem.
 
 ## Build database project separately
-In the API project's CI pipeline, the build configuration used the .NET Core CLI to build the entire solution. Initially I assumed that this would build the database project automatically, since the database project was part of the solution. However, I discovered that [you can't use the .NET Core CLI to build a database project](https://github.com/dotnet/sdk/issues/10441)(yet). Similarly, you instead build the solution with MSBuild, but use `dotnet publish` to output the build artifacts, the database project will be built but no database artifacts will be published because `dotnet publish` only affects .NET Core projects.
+In the API project's CI pipeline, the build configuration used the .NET Core CLI to build the entire solution. Initially I assumed that this would build the database project automatically, since the database project was part of the solution. However, I discovered that [you can't use the .NET Core CLI to build a database project](https://github.com/dotnet/sdk/issues/10441) (yet). Similarly, you instead build the solution with MSBuild, but use `dotnet publish` to output the build artifacts, the database project will be built but no database artifacts will be published because `dotnet publish` only affects .NET Core projects.
 
 To fix, I simply had to add separate build and publish steps for the database project to the pipeline.
