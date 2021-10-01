@@ -4,12 +4,13 @@
 
 layout: home
 ---
+
 <span class="face">
 ![Me](/static/img/face.png)
 </span>
 ## Hi, I'm Zach.
-I do full-stack software development out of Toledo, OH. I enjoy combining automation with practical UIs to make users' lives easier.
+I do full-stack software development out of Toledo, OH. Learn everything and share it.
 
-Outside of software I'm a dad to two beautiful kids. In my spare time I like practicing [martial arts](https://www.ohiomartialarts.com/our-history), the mandolin, and [competitive team games](https://playoverwatch.com).
+Outside of software I raise two beautiful kids with my wife. In my spare time I like practicing [martial arts](https://www.ohiomartialarts.com/our-history), running, cooking for my family, and [playing co-op games](https://www.reddit.com/r/MECoOp/).
 
 Get in touch at [contact@zachesposito.me](mailto:contact@zachesposito.me).

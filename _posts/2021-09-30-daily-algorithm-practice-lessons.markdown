@@ -1,5 +1,3 @@
---need to make new SSH key and write pass
-
 ---
 layout: post
 title:  "Lessons Learned From Daily Algorithm Practice"
@@ -20,7 +18,7 @@ While simple looping works for small sets of data, it can be painfully slow when
 ### Cheat with math
 If a problem has a pattern that feels like math, there may be a formula-based solution. Here's one such problem on HackerRank: [Number Line Jumps](https://www.hackerrank.com/challenges/kangaroo/problem). Given two kangaroos jumping in the same direction, identify whether they will ever meet at the same point given their starting positions and speed.
 <figure>
-  <img src="/static/img/number-line-jumps.png" alt="illustration of kangaroos jumping on a number line"/>
+  <img src="/static/img/number-line-jumps.png" alt="illustration of kangaroos jumping on a number line" style="background: #fff;"/>
   <figcaption>Image credit: HackerRank</figcaption>
 </figure>
 
@@ -62,9 +60,10 @@ Sometimes you can find a math-based pattern in a problem that indicates that it'
 
 One problem like this on HackerRank is [Happy Ladybugs](https://www.hackerrank.com/challenges/happy-ladybugs/forum). Given an array of spaces representing a game board filled with ladybugs of various colors, identify whether the ladybugs can be rearranged such that all ladybugs are adjacent to at least one other ladybug of the same color.
 
-At first glance it might look like some type of loop is required to check whether the ladybugs can be sorted correctly. However after thinking about the problem for a bit I realized that there's no need for a loop since any ladybug can be moved to any open space, so as long as one of the following is true, the ladybugs can be rearranged correctly:
+At first glance it might look like some type of recursive loop is required to check whether the ladybugs can be sorted correctly. However after thinking about the problem for a bit I realized that only one loop is needed since any ladybug can be moved to any open space, so as long as one of the following is true, the ladybugs can be rearranged correctly:
 * The ladybugs are not already arranged correctly, there are no lone ladybugs of a color, and there's at least one open space, OR
 * The ladybugs are already arranged correctly
+
 Below was my solution:
 {% highlight csharp %}
 public static string happyLadybugs(string b)
@@ -134,7 +133,7 @@ public static List<int[]> findCombinations(int[] array)
 One gotcha though is that when initializing a stack using a collection, the elements in the stack will be in reverse order (at least in C#). In the example above it doesn't matter, but it's something to be aware of for when order does matter.
 
 ## Recognize when there is no shortcut
-Finally, despite sometimes being able to find shortcuts or tricks to simplify a solution, there are times where the only option is brute force. For example, one HackerRank problem ([ACM ICPC Team](https://www.hackerrank.com/challenges/acm-icpc-team/problem)) required identifying combinations of known subjects among attendees of a programming contest. In this case there is no secret solution, you simply have to loop over all attendees and build all possible combinations
+Finally, despite sometimes being able to find shortcuts or tricks to simplify a solution, there are times where the only option is brute force. For example, one HackerRank problem ([ACM ICPC Team](https://www.hackerrank.com/challenges/acm-icpc-team/problem)) requires identifying combinations of known subjects among attendees of a programming contest. In this case there is no secret solution, you simply have to loop over all attendees and build all possible combinations.
 
 The lesson here is while it's useful to know how to find shortcuts, it's equally useful to know how to tell when there is no shortcut so that you can get on with solving the problem without wasting time.
 
