@@ -11,6 +11,6 @@ layout: home
 ## Hi, I'm Zach.
 I do full-stack software development out of Toledo, OH. Learn everything and share it.
 
-Outside of software I raise two beautiful kids with my wife. In my spare time I like practicing [martial arts](https://www.ohiomartialarts.com/our-history), running, cooking for my family, and [playing co-op games](https://www.reddit.com/r/MECoOp/).
+Outside of software I raise two beautiful kids with my wife. In my spare time I like studying [martial arts](https://www.ohiomartialarts.com/our-history), classical guitar, running, cooking for my family, and [playing co-op games](https://www.reddit.com/r/MECoOp/).
 
 Get in touch at [contact@zachesposito.me](mailto:contact@zachesposito.me).
